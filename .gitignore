@@ -2,3 +2,4 @@ public/**.*
 *.pyc
 .vscode/
 venv/
+public/
