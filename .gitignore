@@ -1,0 +1,4 @@
+public/**.*
+*.pyc
+.vscode/
+venv/
