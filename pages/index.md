@@ -1,7 +1,5 @@
-# Motherfucking Website
+# Demo Home Page
 
-Generated from Markdown!
+[Blog](/blog)
 
-Hi this is Angus Goucher.
-
-[link test](https://serverdoesnt.works/)
+Generated from Markdown
