@@ -6,6 +6,16 @@ import markdown
 import http.server
 import shutil
 
+BASE_URL = "/sitegen/"
+
+PUBLIC_DIR = "public/"
+POSTS_DIR = "posts/"
+PAGES_DIR = "pages/"
+
+PAGE_TEMPLATE = "page.html"
+POST_TEMPLATE = "post.html"
+BLOG_TEMPLATE = "blog.html"
+
 def render_pages(root_dir: str, templates_env: jinja2.Environment, pages_env: jinja2.Environment):
     print("Reading pages...")
     pages = []
@@ -78,7 +88,9 @@ class Post:
         self.rendered_html = ""
 
     def render(self, env: jinja2.Environment):
-        rendered_md = env.get_template(self.get_name()).render()
+        rendered_md = env.get_template(self.get_name()).render({
+            "base_url": BASE_URL
+        })
         self.rendered_html = markdown.markdown(rendered_md)
 
     def get_name(self):
@@ -97,13 +109,14 @@ class Post:
         return self.get_name_no_ext()
     
     def get_url(self):
-        return "/" + self.get_output_name()
+        return BASE_URL + self.get_output_name()
     
 def render_post_template(template: jinja2.Template, post: Post) -> str:
     return template.render({
         "post_name": post.get_name(),
         "post_path": post.get_path(),
-        "post_html": post.get_html()
+        "post_html": post.get_html(),
+        "base_url": BASE_URL
     })
 
 def render_blog(root_dir: str, templates_env: jinja2.Environment, posts_env: jinja2.Environment):
@@ -134,7 +147,8 @@ def render_blog(root_dir: str, templates_env: jinja2.Environment, posts_env: jin
     print("Rendering blog...")
     blog_template = templates_env.get_template("blog.html")
     blog_html = blog_template.render({
-        "posts": posts
+        "posts": posts,
+        "base_url": BASE_URL
     })
     output_file_path = os.path.join(output_dir, "blog/index.html")
     os.makedirs(os.path.dirname(output_file_path), exist_ok=True)
