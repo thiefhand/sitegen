@@ -32,7 +32,9 @@ def render_pages(root_dir: str, templates_env: jinja2.Environment, pages_env: ji
     print("Parsing pages...")
     rendered_pages = []
     for page in pages:
-        rendered_md = pages_env.get_template(page).render()
+        rendered_md = pages_env.get_template(page).render({
+            "base_url": BASE_URL
+        })
         rendered_html = markdown.markdown(rendered_md)
 
         rendered_pages.append((page, rendered_html))
