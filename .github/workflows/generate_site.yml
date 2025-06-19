@@ -8,6 +8,35 @@ jobs:
         name: Generate Static Site
         runs-on: ubuntu-latest
         steps:
+            # Grab the repo, setup python, install requirements, and generate.
             - uses: actions/checkout@v4
               with:
                 repository: thiefhand/sitegen
+
+            - uses: actions/setup-python@v5
+              with:
+                python-version: '3.13'
+                cache: 'pip'
+            
+            - run: pip install -r requirements.txt
+
+            - run: python3 src/main.py . gen
+
+            - uses: actions/upload-pages-artifact@v3
+              with:
+                path: public/
+
+    deploy_site:
+        needs: generate_site
+        permissions:
+            pages: write      # to deploy to Pages
+            id-token: write   # to verify the deployment originates from an appropriate source
+
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/deploy-pages@v4
+              id: deployment
