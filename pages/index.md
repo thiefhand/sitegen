@@ -1,5 +1,5 @@
 # Demo Home Page
 
-[Blog](/blog)
+[Blog]({{ base_url }}/blog)
 
 Generated from Markdown
