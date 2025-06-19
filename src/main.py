@@ -45,7 +45,7 @@ def render_pages(root_dir: str, templates_env: jinja2.Environment, pages_env: ji
         rendered_html = page_template.render({
             "page_name": page_name,
             "page_path": page[0],
-            "page_html": page[1],
+            "page_html": page[1], 
             "base_url": BASE_URL
         })
         templated_pages.append((page_name, rendered_html))
