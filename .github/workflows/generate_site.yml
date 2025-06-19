@@ -1,0 +1,13 @@
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    generate_site:
+        name: Generate Static Site
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                repository: thiefhand/sitegen
