@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ post_name }}</title>
     {% include "style.html" %}
 </head>
-<body>
-    <a href="{{ get_root_url() }}">Back to home</a> - <a href="{{ get_url('blog') }}">Back to blog</a>
 
-    <h1>{{ post_name }}</h1>
-    <h4>a post</h4>
-    <hr />
-    {{ post_html }}
+<body>
+    <div class="content">
+        <a href="{{ get_root_url() }}">Back to home</a> - <a href="{{ get_url('blog') }}">Back to blog</a>
+
+        <h1>{{ post_name }}</h1>
+        <h4>a post</h4>
+        <hr />
+        {{ post_html }}
+    </div>
+
 </body>
+
 </html>

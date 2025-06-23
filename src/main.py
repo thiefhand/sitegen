@@ -11,6 +11,7 @@ BASE_URL = os.environ.get("SITEGEN_BASE_URL", "/")
 PUBLIC_DIR = "public/"
 POSTS_DIR = "posts/"
 PAGES_DIR = "pages/"
+RESOURCES_DIR = "res/"
 
 PAGE_TEMPLATE = "page.html"
 POST_TEMPLATE = "post.html"
@@ -20,7 +21,8 @@ def get_global_format_data() -> dict:
     return {
         "base_url": BASE_URL,
         "get_url": get_url,
-        "get_root_url": get_root_url
+        "get_root_url": get_root_url,
+        "get_resource_url": get_resource_url
     }
 
 def render_pages(root_dir: str, templates_env: jinja2.Environment, pages_env: jinja2.Environment):
@@ -123,6 +125,9 @@ def get_url(page_base_name: str) -> str:
 
 def get_root_url() -> str:
     return BASE_URL
+
+def get_resource_url(resource_name: str) -> str:
+    return BASE_URL + RESOURCES_DIR + resource_name
     
 def render_post_template(template: jinja2.Template, post: Post) -> str:
     return template.render({

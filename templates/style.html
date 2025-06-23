@@ -1,29 +1,137 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
 <style>
-    @font-face {
-        font-family: 'LibreBaskerville-Bold';
-        src: url('res/LibreBaskerville-Bold.ttf') format('ttf');
+    /* 1. Use a more-intuitive box-sizing model */
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
     }
 
-    @font-face {
-        font-family: 'LibreBaskerville-Regular';
-        src: url('res/LibreBaskerville-Regular.ttf') format('ttf');
+    /* 2. Remove default margin */
+    * {
+        margin: 0;
+    }
+
+    /* 3. Enable keyword animations */
+    @media (prefers-reduced-motion: no-preference) {
+        html {
+            interpolate-size: allow-keywords;
+        }
     }
 
     body {
-        margin: 40px auto;
-        max-width: 650px;
-        line-height: 1.6;
+        /* 4. Add accessible line-height */
+        line-height: 1.5;
+        /* 5. Improve text rendering */
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* 6. Improve media defaults */
+    img,
+    picture,
+    video,
+    canvas,
+    svg {
+        display: block;
+        max-width: 100%;
+    }
+
+    /* 7. Inherit fonts for form controls */
+    input,
+    button,
+    textarea,
+    select {
+        font: inherit;
+    }
+
+    /* 8. Avoid text overflows */
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        overflow-wrap: break-word;
+    }
+
+    /* 9. Improve line wrapping */
+    p {
+        text-wrap: pretty;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        text-wrap: balance;
+    }
+
+    /*
+        10. Create a root stacking context
+    */
+    #root,
+    #__next {
+        isolation: isolate;
+    }
+
+    /* Custom style */
+
+    html {
+        height: 100%;
+    }
+
+    body {
         font-size: 18px;
         color: #444;
-        padding: 0 10px;
         background-color: #eee;
-        font-family: 'LibreBaskerville-Regular', serif;
+        font-family: "Libre Baskerville", serif;
+        font-weight: 400;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
     }
 
     h1,
     h2,
     h3 {
-        font-family: 'LibreBaskerville-Bold', serif;
-        line-height: 1.2
+        font-family: "Libre Baskerville", serif;
+        font-weight: 700;
+        line-height: 1.8;
+    }
+    
+    .content {
+        max-width: 450px;
+        padding: 30px;  
+    }
+
+    p,
+    hr,
+    /* h1,
+    h2,
+    h3, */
+    h4,
+    h5,
+    h6 {
+        margin-bottom: 10px;
+    }
+
+    .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    img.logo {
+        text-align: center;
+        max-height: 300px;
     }
 </style>
