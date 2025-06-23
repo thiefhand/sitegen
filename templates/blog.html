@@ -7,7 +7,7 @@
     {% include "style.html" %}
 </head>
 <body>
-    <a href="{{ base_url }}/">Back to home</a>
+    <a href="{{ get_root_url() }}">Back to home</a>
     <h1>Blog</h1>
     <hr />
     {% for post in posts %}

@@ -7,6 +7,8 @@ jobs:
     generate_site:
         name: Generate Static Site
         runs-on: ubuntu-latest
+        env: 
+          SITEGEN_BASE_URL: '/sitegen/'
         steps:
             # Grab the repo, setup python, install requirements, and generate.
             - uses: actions/checkout@v4

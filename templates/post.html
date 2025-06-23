@@ -7,7 +7,7 @@
     {% include "style.html" %}
 </head>
 <body>
-    <a href="{{ base_url }}/">Back to home</a> - <a href="{{ base_url }}/blog">Back to blog</a>
+    <a href="{{ get_root_url() }}">Back to home</a> - <a href="{{ get_url('blog') }}">Back to blog</a>
 
     <h1>{{ post_name }}</h1>
     <h4>a post</h4>
