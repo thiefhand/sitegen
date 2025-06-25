@@ -1,4 +1,7 @@
+<div class="logo-container">
+            <img src="{{ get_resource_url('thiefhand.png') }}" class="logo" />
 
+        </div>
 
 # Thiefhand 
 ## _makes video games_
