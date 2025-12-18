@@ -1,3 +1,3 @@
-############ 09.06.25
+###### 09.06.25
 
 We are making an awesome game! We're in the process of putting together this website, and a devlog coming soon. We'll be making a Patreon so people can support our work, but for now you can find us on our [Discord](https://discord.gg/tad4SxxSaM).
