@@ -18,6 +18,8 @@ Generated using [sitegen](https://github.com/thiefhand/sitegen/)
 
 ---
 
-### &nbsp;&nbsp;
+<p> &nbsp;
+&nbsp;
+</p>
 
 ###### ©2025 Thiefhand LLC, all rights reserved. "Reclaimer" and all associated logos and designs are trademarks of Thiefhand LLC.
