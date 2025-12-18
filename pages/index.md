@@ -16,8 +16,6 @@
 
 Generated using [sitegen](https://github.com/thiefhand/sitegen/)
 
----
-
 ## &nbsp; <br />
 &nbsp;
 
