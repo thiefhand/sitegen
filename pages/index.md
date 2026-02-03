@@ -20,5 +20,5 @@ Generated using [sitegen](https://github.com/thiefhand/sitegen/)
 &nbsp;
 
 <div style="text-align: center;">
-<h6>©2025 Thiefhand LLC, all rights reserved. "Reclaimer" and all associated logos and designs are trademarks of Thiefhand LLC.</h6>
+<h6>©2025-2026 Thiefhand, all rights reserved. "Reclaimer" and all associated logos and designs are trademarks of Thiefhand LLC.</h6>
 </div>
