@@ -81,7 +81,7 @@ class RegenHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 def start_server(root_dir: str, serve_path: str):
     generate(root_dir)
 
-    address = ("0.0.0.0", 8080)
+    address = ("0.0.0.0", 9000)
 
     abs_serve_path = os.path.join(root_dir, serve_path)
     os.chdir(abs_serve_path)

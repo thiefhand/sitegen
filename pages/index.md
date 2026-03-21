@@ -14,7 +14,7 @@
 
 [Ditherer](https://github.com/thiefhand/ditherer)
 
-Generated using [sitegen](https://github.com/thiefhand/sitegen/)
+_<small>Generated using [sitegen](https://github.com/thiefhand/sitegen/)</small>_
 
 ## &nbsp; <br />
 &nbsp;
