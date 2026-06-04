@@ -8,6 +8,8 @@
 
 ---
 
+## [Wishlist Reclaimer!](https://store.steampowered.com/app/4303180/Reclaimer/)
+
 [About]({{ get_url('about') }})
 
 [Blog]({{ get_url('blog') }}), [Github](https://github.com/thiefhand/), [Discord](https://discord.gg/tad4SxxSaM), [Patreon](https://www.patreon.com/cw/Thiefhand)
