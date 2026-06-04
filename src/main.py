@@ -136,14 +136,18 @@ def render_post_template(template: jinja2.Template, post: Post) -> str:
         "post_html": post.get_html(), 
     } | get_global_format_data()) # here, | combines dictionaries.
 
+def sort_posts(post: Post):
+    return post.get_name_no_ext()
+
 def render_blog(root_dir: str, templates_env: jinja2.Environment, posts_env: jinja2.Environment):
     print("Reading posts...")
     posts: list[Post] = []
 
     posts_dir = os.path.join(root_dir, "posts/")
-    for path, dirs, files in os.walk(posts_dir):
+    for _, _, files in os.walk(posts_dir):
         for file in files:
             posts.append(Post(file))
+    posts.sort(key=sort_posts, reverse=True)
 
     print("Rendering posts...")
     for post in posts:
