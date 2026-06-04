@@ -16,7 +16,7 @@
 
 <div class="small-header">Socials</div>
 
-[Github](https://github.com/thiefhand/), [Discord](https://discord.gg/tad4SxxSaM), [Patreon](https://www.patreon.com/cw/Thiefhand), [Instagram](https://www.instagram.com/thiefhand_dev/), [YouTube](https://www.youtube.com/@thiefhand_games), [Twitter](https://x.com/thiefhand_dev), [Reddit](https://www.reddit.com/user/thiefhand/), [BlueSky](https://bsky.app/profile/thiefhand.com), [TikTok](https://www.tiktok.com/@thiefhand_dev)
+[Discord](https://discord.gg/tad4SxxSaM), [Patreon](https://www.patreon.com/cw/Thiefhand), [Instagram](https://www.instagram.com/thiefhand_dev/), [YouTube](https://www.youtube.com/@thiefhand_games), [Twitter](https://x.com/thiefhand_dev), [Reddit](https://www.reddit.com/user/thiefhand/), [BlueSky](https://bsky.app/profile/thiefhand.com), [TikTok](https://www.tiktok.com/@thiefhand_dev)
 
 <a href="https://github.com/thiefhand/" style="color : green;">Github</a>
 
