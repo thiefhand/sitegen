@@ -8,13 +8,11 @@
 
 ---
 
-<<<<<<< HEAD
+
 ## [Wishlist Reclaimer!](https://store.steampowered.com/app/4303180/Reclaimer/)
 
-[About]({{ get_url('about') }})
-=======
 **[About]({{ get_url('about') }})**, **[Blog]({{ get_url('blog') }})**
->>>>>>> 61b56954e9cbbfcbab11eb7ad14617b1915beb99
+
 
 <div class="small-header">Socials</div>
 
