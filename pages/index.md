@@ -9,7 +9,7 @@
 ---
 
 <<<<<<< HEAD
-### [Wishlist Reclaimer!](https://store.steampowered.com/app/4303180/Reclaimer/)
+## [Wishlist Reclaimer!](https://store.steampowered.com/app/4303180/Reclaimer/)
 
 [About]({{ get_url('about') }})
 =======
