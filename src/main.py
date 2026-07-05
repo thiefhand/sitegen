@@ -1,6 +1,5 @@
 import os
 import sys
-import math
 import jinja2
 import markdown
 import http.server
@@ -17,7 +16,7 @@ PAGE_TEMPLATE = "page.html"
 POST_TEMPLATE = "post.html"
 BLOG_TEMPLATE = "blog.html"
 
-def get_global_format_data() -> dict:
+def get_global_format_data() -> dict[str, object]:
     return {
         "base_url": BASE_URL,
         "get_url": get_url,
@@ -25,41 +24,42 @@ def get_global_format_data() -> dict:
         "get_resource_url": get_resource_url
     }
 
-def render_pages(root_dir: str, templates_env: jinja2.Environment, pages_env: jinja2.Environment):
-    print("Reading pages...")
-    pages = []
+def get_files_in_dir(pages_dir: str) -> list[str]:
+    pages: list[str] = []
 
-    pages_dir = os.path.join(root_dir, "pages/")
-    for path, dirs, files in os.walk(pages_dir):
+    for _, _, files in os.walk(pages_dir):
         for file in files:
             pages.append(file)
-            # with open(file_path, "r") as page_file:
-            #     page_markdown = page_file.read()
-            #     new_page = page.Page(page_markdown)
-            #     pages.append(new_page)
 
-    print("Parsing pages...")
-    rendered_pages = []
+    return pages
+
+def render_markdown_pages_to_html(pages: list[str], pages_env: jinja2.Environment) -> list[tuple[str, str]]:
+    rendered_pages: list[tuple[str, str]] = []
+
     for page in pages:
         rendered_md = pages_env.get_template(page).render(get_global_format_data())
         rendered_html = markdown.markdown(rendered_md)
 
         rendered_pages.append((page, rendered_html))
 
-    print("Parsing templates...")
-    page_template = templates_env.get_template("page.html")
-    templated_pages = []
-    for page in rendered_pages:
+    return rendered_pages
+
+def render_html_pages_from_template(template: jinja2.Template, rendered_markdown_pages: list[tuple[str, str]]) -> list[tuple[str, str]]:
+    templated_pages: list[tuple[str, str]] = []
+
+    for page in rendered_markdown_pages:
         page_name, _ = os.path.splitext(page[0])
-        rendered_html = page_template.render({
+        rendered_html = template.render({
             "page_name": page_name,
             "page_path": page[0],
             "page_html": page[1]
         } | get_global_format_data())
-        templated_pages.append((page_name, rendered_html))
 
-    print("Outputing HTML...")
-    output_dir = os.path.join(root_dir, "public/")
+        templated_pages.append((page_name, rendered_html))
+    
+    return templated_pages
+
+def save_pages_to_fs(templated_pages: list[tuple[str, str]], output_dir: str) -> None:
     for page in templated_pages:
         if page[0] != "index":
             output_path = page[0] + "/index.html"
@@ -70,11 +70,31 @@ def render_pages(root_dir: str, templates_env: jinja2.Environment, pages_env: ji
         with open(output_file_path, "w") as output_file:
             output_file.write(page[1])
 
+def get_output_dir(root_dir: str):
+    return os.path.join(root_dir, "public/")
+
+def render_pages(root_dir: str, templates_env: jinja2.Environment, pages_env: jinja2.Environment):
+    print("Reading pages...")
+    pages_dir = os.path.join(root_dir, "pages/")
+    pages = get_files_in_dir(pages_dir)
+
+    print("Parsing pages...")
+    rendered_pages = render_markdown_pages_to_html(pages, pages_env)
+
+    print("Parsing templates...")
+    page_template = templates_env.get_template("page.html")
+    templated_pages = render_html_pages_from_template(page_template, rendered_pages)
+
+    print("Outputing HTML...")
+    output_dir = get_output_dir(root_dir)
+    save_pages_to_fs(templated_pages, output_dir)
+
+
 class RegenHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
     def handle(self):
-        generate(self.server.site_root_dir)
+        generate(self.server.site_root_dir) # type: ignore
 
-        os.chdir(self.server.abs_serve_path)
+        os.chdir(self.server.abs_serve_path) # type: ignore
 
         return super().handle()
 
@@ -89,8 +109,8 @@ def start_server(root_dir: str, serve_path: str):
     print("Serving {} at {}:{}...".format(serve_path, address[0], address[1]))
 
     server = http.server.ThreadingHTTPServer(address, RegenHTTPRequestHandler)
-    server.site_root_dir = root_dir
-    server.abs_serve_path = abs_serve_path
+    server.site_root_dir = root_dir # type: ignore
+    server.abs_serve_path = abs_serve_path # type: ignore
     server.serve_forever()
 
 class Post:
@@ -175,6 +195,12 @@ def render_blog(root_dir: str, templates_env: jinja2.Environment, posts_env: jin
     with open(output_file_path, "w") as output_file:
         output_file.write(blog_html)
 
+def render_template_as_page(root_dir: str, template: jinja2.Template, page_name: str):
+    save_pages_to_fs(render_html_pages_from_template(
+        template,
+        [(page_name, "")]
+    ), get_output_dir(root_dir))
+
 def clean_output(root_dir: str):
     output_dir = os.path.join(root_dir, "public/")
     if os.path.exists(output_dir):
@@ -212,6 +238,8 @@ def generate(root_dir: str):
     render_pages(root_dir, templates_env, pages_env)   
 
     render_blog(root_dir, templates_env, posts_env)
+
+    render_template_as_page(root_dir, templates_env.get_template("press_kit.html"), "press_kit")
 
 def main():
     print("Sitegen by gusg21")

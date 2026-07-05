@@ -4,15 +4,14 @@
         </div>
 
 # Thiefhand
+
 ## _makes video games_
 
 ---
 
-
 ## [Wishlist Reclaimer!](https://store.steampowered.com/app/4303180/Reclaimer/)
 
-**[About]({{ get_url('about') }})**, **[Blog]({{ get_url('blog') }})**
-
+**[About]({{ get_url('about') }})**, **[Blog]({{ get_url('blog') }})**, **[Press Kit]({{ get_url('press_kit') }})**
 
 <div class="small-header">Socials</div>
 
@@ -25,6 +24,7 @@
 _<small>Generated using [sitegen](https://github.com/thiefhand/sitegen/)</small>_
 
 ## &nbsp; <br />
+
 &nbsp;
 
 <div style="text-align: center;">
