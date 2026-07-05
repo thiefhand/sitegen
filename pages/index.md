@@ -11,7 +11,7 @@
 
 ## [Wishlist Reclaimer!](https://store.steampowered.com/app/4303180/Reclaimer/)
 
-**[About]({{ get_url('about') }})**, **[Blog]({{ get_url('blog') }})**, **[Press Kit]({{ get_url('press_kit') }})**
+**[About]({{ get_url('about') }})**, **[Blog]({{ get_url('blog') }})**
 
 <div class="small-header">Socials</div>
 
